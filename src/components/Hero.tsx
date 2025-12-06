@@ -1,9 +1,18 @@
-import React from 'react'
+"use client";
 
-const Hero: React.FC = () => {
+export default function Hero() {
+  const currency: string = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || "$";
+
   return (
-    <div>Hero</div>
-  )
+    <div>
+      <div></div>
+      {/* best products and discounts */}
+      <div>
+        {/* best products */}
+        <div></div>
+        {/* discounts */}
+        <div></div>
+      </div>
+    </div>
+  );
 }
-
-export default Hero
