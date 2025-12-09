@@ -2,13 +2,16 @@
 
 import { ChevronRightIcon } from "lucide-react";
 import Button from "./Button";
+import Image from "next/image";
+import { assets } from "@/assets/assets";
 
 export default function Hero() {
   const currency: string = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || "$";
 
   return (
-    <div className="flex w-full flex-col items-center justify-center">
-      <div className="flex min-w-full flex-col items-start gap-4 rounded-3xl bg-pink-200 p-4 sm:p-20">
+    <div className="relative flex flex-col sm:flex-row min-w-full items-center justify-center rounded-3xl bg-pink-200 overflow-hidden">
+      {/* right side */}
+      <div className="flex w-full flex-col items-start gap-4 p-4 sm:p-20">
         {/* free shipping */}
         <div className="flex items-center justify-center gap-2 rounded-4xl bg-pink-300 p-1">
           <span className="rounded-4xl bg-pink-600 px-3 py-2 text-sm text-pink-50 sm:py-1">
@@ -33,6 +36,16 @@ export default function Hero() {
           <span className="text-2xl font-semibold">{currency} 1200</span>
         </div>
         <Button className="bg-slate-800 hover:bg-gray-600">Learn More</Button>
+      </div>
+
+      {/* image */}
+      <div className="sm:absolute bottom-0 z-0 right-0">
+        <Image
+          src={assets.hero_model_img}
+          alt="Hero Image"
+          width={500}
+          height={300}
+        />
       </div>
     </div>
   );
