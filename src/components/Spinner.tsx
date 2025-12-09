@@ -17,7 +17,8 @@ const SpinnerVariants = cva(defaultStyles, {
 });
 
 interface ISpinner
-  extends ComponentProps<"svg">, VariantProps<typeof SpinnerVariants> {
+  extends ComponentProps<"svg">,
+    VariantProps<typeof SpinnerVariants> {
   wrapperClass?: string;
   "aria-label"?: string;
 }
