@@ -9,7 +9,7 @@ export default function Hero() {
   const currency: string = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || "$";
 
   return (
-    <div className="relative flex flex-col sm:flex-row min-w-full items-center justify-center rounded-3xl bg-pink-200 overflow-hidden">
+    <div className="relative flex min-w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-pink-200 sm:flex-row">
       {/* right side */}
       <div className="flex w-full flex-col items-start gap-4 p-4 sm:p-20">
         {/* free shipping */}
@@ -39,7 +39,7 @@ export default function Hero() {
       </div>
 
       {/* image */}
-      <div className="sm:absolute bottom-0 z-0 right-0">
+      <div className="right-0 bottom-0 z-0 sm:absolute">
         <Image
           src={assets.hero_model_img}
           alt="Hero Image"
