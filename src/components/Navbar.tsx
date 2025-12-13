@@ -1,13 +1,13 @@
 "use client";
 
 import { navLinks } from "@/app/data/navLinks";
-import { LogIn, Menu, User, X } from "lucide-react";
+import { LogIn, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Button from "./Button";
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
+const Navbar: React.FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <nav className="sticky top-0 z-50 mb-2 w-full overflow-hidden bg-white shadow-sm dark:bg-black">
@@ -18,15 +18,13 @@ const Navbar = () => {
             Dovo<span className="text-slate-800">MarT.</span>
           </h1>
 
-          {/* plus badge */}
           <sup className="inline-flex items-center rounded-full bg-pink-600 px-3 py-0.5 text-xs font-semibold text-white">
             plus
           </sup>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="flex items-center justify-between gap-8">
-          {/* links */}
+        <div className="flex items-center gap-8">
           <ul className="hidden gap-6 sm:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -39,7 +37,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          {/* login button */}
+
           <Button className="hidden w-32 items-center justify-center gap-2 rounded-4xl sm:flex">
             Login
           </Button>
@@ -49,34 +47,36 @@ const Navbar = () => {
         <button
           onClick={() => setOpen(true)}
           className="focus:outline-none sm:hidden"
+          aria-label="Open menu"
         >
           <Menu className="h-6 w-6" />
         </button>
       </div>
 
-      {/* Mobile Sidebar Overlay */}
+      {/* Mobile Sidebar */}
       {open && (
         <div
           className="fixed inset-0 z-40 bg-black/40 sm:hidden"
           onClick={() => setOpen(false)}
         >
-          {/* Sidebar */}
           <div
             className="absolute top-0 right-0 h-full w-64 bg-white shadow-lg"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent<HTMLDivElement>) =>
+              e.stopPropagation()
+            }
           >
-            {/* Header Row: Logo + Close Button */}
+            {/* Header */}
             <div className="mb-8 flex items-center justify-between px-6 pt-6">
               <h1 className="text-2xl font-bold text-pink-600">
                 Dovo<span className="text-slate-800">MarT</span>
               </h1>
 
-              <button onClick={() => setOpen(false)} className="text-gray-600">
+              <button onClick={() => setOpen(false)} aria-label="Close menu">
                 <X className="h-6 w-6" />
               </button>
             </div>
 
-            {/* Menu Items */}
+            {/* Links */}
             <ul className="flex flex-col gap-6 px-6">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -96,9 +96,8 @@ const Navbar = () => {
               })}
             </ul>
 
-            {/* login and log out button */}
-
-            <div className="w-full absolute bottom-0">
+            {/* Login Button */}
+            <div className="absolute bottom-0 w-full">
               <Button className="flex w-full items-center justify-center gap-4 rounded-md">
                 <LogIn className="h-5 w-5" />
                 Login
