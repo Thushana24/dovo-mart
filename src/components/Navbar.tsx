@@ -26,16 +26,26 @@ const Navbar: React.FC = () => {
         {/* Desktop Navigation */}
         <div className="flex items-center gap-8">
           <ul className="hidden gap-6 sm:flex">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="font-medium transition hover:text-pink-600"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <li key={link.href} className="relative">
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-1 font-medium transition hover:text-pink-600"
+                  >
+                    {link.name}
+
+                    {/* Badge for cart */}
+                    {link.name === "Cart" && link.count && link.count > 0 && (
+                      <sup className="absolute -top-2 -right-3 flex h-4 w-4 items-center justify-center rounded-full bg-slate-800 text-xs font-bold text-white">
+                        {link.count}
+                      </sup>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <Button className="hidden w-32 items-center justify-center gap-2 rounded-4xl sm:flex">
@@ -80,16 +90,27 @@ const Navbar: React.FC = () => {
             <ul className="flex flex-col gap-6 px-6">
               {navLinks.map((link) => {
                 const Icon = link.icon;
-
                 return (
-                  <li key={link.href}>
+                  <li key={link.href} className="relative">
                     <Link
                       href={link.href}
                       onClick={() => setOpen(false)}
                       className="flex items-center gap-4 text-lg font-medium hover:text-pink-600"
                     >
-                      <Icon className="h-5 w-5 text-pink-700" />
-                      {link.name}
+                      <div className="relative flex items-center">
+                        <Icon className="h-5 w-5 text-pink-700" />
+
+                        {/* Badge for cart */}
+                        {link.name === "Cart" &&
+                          link.count &&
+                          link.count > 0 && (
+                            <sup className="absolute -top-2 -right-4 flex h-4 w-4 items-center justify-center rounded-full bg-slate-800 text-xs font-bold text-white">
+                              {link.count}
+                            </sup>
+                          )}
+                      </div>
+
+                      <span>{link.name}</span>
                     </Link>
                   </li>
                 );

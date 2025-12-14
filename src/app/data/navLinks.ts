@@ -5,6 +5,7 @@ export interface NavLink {
   name: string;
   href: string;
   icon: LucideIcon;
+  count?: number | null;
 }
 
 export const navLinks: NavLink[] = [
@@ -12,7 +13,7 @@ export const navLinks: NavLink[] = [
   { name: "About", href: "/about", icon: Info },
   { name: "Shop", href: "/shop", icon: ShoppingBag },
   { name: "Contact", href: "/contact", icon: Phone },
-  { name: "Cart", href: "/cart", icon: ShoppingCart },
+  { name: "Cart", href: "/cart", icon: ShoppingCart , count: 3},
 ];
 
 
