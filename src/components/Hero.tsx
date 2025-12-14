@@ -5,11 +5,11 @@ import Button from "./Button";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 
-export default function Hero() {
+const Hero: React.FC = () => {
   const currency: string = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || "$";
 
   return (
-    <div className="relative flex min-w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-pink-200 sm:flex-row">
+    <div className="relative flex min-w-screen flex-col items-center justify-center overflow-hidden rounded-3xl bg-pink-200 sm:flex-row">
       {/* right side */}
       <div className="flex w-full flex-col items-start gap-4 p-4 sm:p-20">
         {/* free shipping */}
@@ -49,4 +49,6 @@ export default function Hero() {
       </div>
     </div>
   );
-}
+};
+
+export default Hero;
