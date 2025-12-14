@@ -13,14 +13,16 @@ const Hero: React.FC = () => {
       {/* right side */}
       <div className="flex w-full flex-col items-start gap-4 p-4 sm:p-20">
         {/* free shipping */}
-        <div className="flex items-center justify-center gap-2 rounded-4xl bg-pink-300 p-1">
+        <div className="group flex cursor-pointer items-center gap-2 rounded-4xl bg-pink-300 p-1 pr-2 transition-[padding] duration-300 ease-out hover:pr-4">
           <span className="rounded-4xl bg-pink-600 px-3 py-2 text-sm text-pink-50 sm:py-1">
             NEWS
           </span>
-          <p className="text-sm text-pink-600">
-            Free Shippings Order Above LKR 10000!
+
+          <p className="text-sm whitespace-nowrap text-pink-600">
+            Free Shipping Orders Above LKR 10,000!
           </p>
-          <ChevronRightIcon className="size-6 text-pink-600 sm:size-4" />
+
+          <ChevronRightIcon className="size-6 text-pink-600 transition-transform duration-300 ease-out group-hover:translate-x-2 sm:size-4" />
         </div>
 
         {/* title */}
